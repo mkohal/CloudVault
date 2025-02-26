@@ -9,7 +9,7 @@ import { AuthProvider } from "../authContext";
 import About from "./components/About";
 import Contact from "./components/Contact";
 
-axios.defaults.baseURL = "http://localhost:3000";
+axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 axios.defaults.withCredentials = true;
 
 

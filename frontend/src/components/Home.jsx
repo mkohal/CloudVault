@@ -26,7 +26,6 @@ const Home = () => {
 
   const handleUpload = async (event) => {
     event.preventDefault();
-    
     if (!selectedFile) {
       toast.error("Please select a file first!");
       return;
@@ -54,18 +53,23 @@ const Home = () => {
     setIsUploading(false); // Reset after upload completes
   };
 
-  useEffect(() => {
-    const fetchFiles = async () => {
-      try {
-        const response = await axios.get("/files");
-        setUploadedFiles(response.data.files);
-      } catch (error) {
-        console.error("Error fetching files:", error);
-        toast.error("Error fetching files!");
-      }
-    };
-    fetchFiles();
-  }, []);
+useEffect(() => {
+  const fetchFiles = async () => {
+    if (!localStorage.getItem("token")) return; // Prevent API call if user is not logged in
+
+    try {
+      const response = await axios.get("/files", {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      });
+      setUploadedFiles(response.data.files);
+    } catch (error) {
+      console.error("Error fetching files:", error);
+      toast.error("Error fetching files!");
+    }
+  };
+
+  fetchFiles();
+}, []);
 
   const handleDownload = async (public_id) => {
     try {
