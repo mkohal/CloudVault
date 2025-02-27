@@ -28,6 +28,10 @@ app.use("/", authRouter);
 app.use("/", downloadRouter);
 app.use("/file", uploadRouter);
 
+app.get("/", (req, res) => {
+  res.send("Server is running");
+});
+
 port = process.env.PORT || 3000
 app.listen(port, ()=>{
     console.log(`Server is running on port ${port}`)
