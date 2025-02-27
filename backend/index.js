@@ -12,12 +12,16 @@ const filesRouter = require("./routes/filesDisplayRoutes")
 const deleteRouter = require("./routes/deleteRoutes")
 const downloadRouter = require("./routes/downloadRoutes")
 
+
 app.use(
   cors({
+    origin: process.env.CLIENT_URL,
+    methods: "GET,POST,PUT,DELETE",
     credentials: true,
-    origin: process.env.CLIENT_URL, 
+    allowedHeaders: "Content-Type,Authorization",
   })
 );
+app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
