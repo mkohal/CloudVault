@@ -15,7 +15,7 @@ const downloadRouter = require("./routes/downloadRoutes")
 app.use(
   cors({
     credentials: true,
-    origin: process.env.CLIENT_URL, // Update this in `.env` to your frontend URL after deployment
+    origin: process.env.CLIENT_URL, 
   })
 );
 app.use(cookieParser());
