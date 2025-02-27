@@ -29,7 +29,7 @@ app.use("/", downloadRouter);
 app.use("/file", uploadRouter);
 
 app.get("/", (req, res) => {
-  res.send("Server is running");
+  res.json("Hello");
 });
 
 port = process.env.PORT || 3000
