@@ -14,12 +14,7 @@ const downloadRouter = require("./routes/downloadRoutes")
 
 
 app.use(
-  cors({
-    origin: process.env.CLIENT_URL,
-    methods: "GET,POST,PUT,DELETE",
-    credentials: true,
-    allowedHeaders: "Content-Type,Authorization",
-  })
+  cors()
 );
 app.use(cors());
 app.use(cookieParser());
