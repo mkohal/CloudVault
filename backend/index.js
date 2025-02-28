@@ -39,7 +39,7 @@ app.use("/api/file", uploadRouter);
 
 // 8️⃣ Root route
 app.get("/", (req, res) => {
-  res.json("Hello");
+  res.json(`Frontend url is ${process.env.FRONTEND_URL}`);
 });
 
 // 9️⃣ Start the server
