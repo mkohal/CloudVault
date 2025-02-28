@@ -11,7 +11,7 @@ const app = express();
 
 // 4️⃣ Configure CORS before defining routes
 const corsOptions = {
-  origin: process.env.FRONTEND_URL, // Replace with your frontend's origin
+  origin: "https://cloud-vault-frontend-omega.vercel.app", // Replace with your frontend's origin
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Allowed HTTP methods
   credentials: true, // If you need to send cookies across origins
   optionsSuccessStatus: 204, // Some legacy browsers (IE11, various SmartTVs) choke on 204
