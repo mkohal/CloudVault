@@ -2,7 +2,6 @@ const express = require("express")
 const app = express();
 const dotenv = require("dotenv");
 dotenv.config();
-const cors = require("cors")
 const authRouter = require("./routes/authenticationRoutes")
 const connectToDB = require("./config/db");
 connectToDB();
@@ -13,24 +12,15 @@ const deleteRouter = require("./routes/deleteRoutes")
 const downloadRouter = require("./routes/downloadRoutes")
 
 
-
-app.use(
-  cors({
-    origin: "https://cloud-vault-frontend-inky.vercel.app",
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true, // Important if using cookies
-  })
-);
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/", deleteRouter);
-app.use("/", filesRouter);
-app.use("/", authRouter);
-app.use("/", downloadRouter);
-app.use("/file", uploadRouter);
+app.use("/api", deleteRouter);
+app.use("/api", filesRouter);
+app.use("/api", authRouter);
+app.use("/api", downloadRouter);
+app.use("/api/file", uploadRouter);
 
 app.get("/", (req, res) => {
   res.json("Hello");
