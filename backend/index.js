@@ -10,13 +10,14 @@ const cookieParser = require("cookie-parser");
 const app = express();
 
 // 4️⃣ Configure CORS before defining routes
-app.use(
-  cors({
-    origin: process.env.FRONTEND_URL, // Frontend URL
-    credentials: true, // Allow cookies/auth headers
-    methods: ["GET", "POST", "PUT", "DELETE"],
-  })
-);
+const corsOptions = {
+  origin: process.env.FRONTEND_URL, // Replace with your frontend's origin
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Allowed HTTP methods
+  credentials: true, // If you need to send cookies across origins
+  optionsSuccessStatus: 204, // Some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+app.use(cors(corsOptions)); // Enable CORS for all routes
 
 // 5️⃣ Middlewares before defining routes
 app.use(express.json());
