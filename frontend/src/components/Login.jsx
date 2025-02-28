@@ -18,10 +18,13 @@ const Login = () => {
     e.preventDefault();
     const { username, password } = formData; // formdata cho username te password extract kita destructuring krke
     try {
-      const { data } = await axios.post("/api/login", {
-        username,
-        password,
-      });
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/api/login`,
+        {
+          username,
+          password,
+        }
+      );
 
       // data ek propert hai axios response object ki isliye {data} ese access kr rhe hai
       // you can also write   const response = await .......

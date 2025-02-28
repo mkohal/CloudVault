@@ -37,7 +37,7 @@ const Home = () => {
     setIsUploading(true); // Set uploading state
 
     try {
-      const { data } = await axios.post("/api/file/upload", formData, {
+      const { data } = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/file/upload`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -58,7 +58,7 @@ useEffect(() => {
     if (!localStorage.getItem("token")) return; // Prevent API call if user is not logged in
 
     try {
-      const response = await axios.get("/api/files", {
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/files`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       setUploadedFiles(response.data.files);
@@ -73,7 +73,9 @@ useEffect(() => {
 
   const handleDownload = async (public_id) => {
     try {
-      const response = await axios.get(`/api/download/${public_id}`);
+      const response = await axios.get(
+        `${import.meta.env.VITE_BACKEND_URL}/api/download/${public_id}`
+      );
       if (response.status === 200 && response.data.signedUrl) {
         window.open(response.data.signedUrl, "_blank");
       } else {
@@ -88,7 +90,9 @@ useEffect(() => {
     setDeletingFile(public_id);
 
     try {
-      const response = await axios.delete(`/api/delete/${public_id}`);
+      const response = await axios.delete(
+        `${import.meta.env.VITE_BACKEND_URL}/api/delete/${public_id}`
+      );
 
       if (response.data.success) {
         // Remove the deleted file from the UI

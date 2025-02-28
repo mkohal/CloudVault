@@ -20,11 +20,14 @@ const Signup = () => {
     const { username, email, password } = formData;
 
     try {
-      const { data } = await axios.post("/signup", {
-        username,
-        email,
-        password,
-      });
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/signup`,
+        {
+          username,
+          email,
+          password,
+        }
+      );
       console.log(data);
       setFormData({ username: "", email: "", password: "" });
       toast.success("Signup Successful. Login to get started!");
