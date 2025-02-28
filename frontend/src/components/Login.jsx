@@ -39,7 +39,7 @@ const Login = () => {
       login(data.token);
       setFormData({ username: "", password: "" });
       toast.success(`${username} logged in successfully!`);
-      navigate("/home");
+      navigate("/");
     } catch (err) {
       toast.error(err.response?.data?.message || "Something went wrong!");
     }

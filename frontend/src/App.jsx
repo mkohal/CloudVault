@@ -11,7 +11,7 @@ import Contact from "./components/Contact";
 function App() {
   const router = createBrowserRouter([
     {
-      path: "/home",
+      path: "/",
       element: (
         <div className="w-full">
           <Navbar />
