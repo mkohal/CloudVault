@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const cors= require("cors")
 const { body, validationResult } = require("express-validator");
 const userModel = require("../models/userModel");
 const bcrypt = require("bcrypt"); // yeh use krte hai password to hash value mai convert krne k liye
