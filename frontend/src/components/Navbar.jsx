@@ -53,7 +53,7 @@ const Navbar = () => {
               </NavLink>
             </>
           ) : (
-            <NavLink to="/">
+            <NavLink to="/home">
               <button
                 onClick={logout}
                 className="text-base font-medium text-white dark:text-gray-900 bg-rose-600 hover:bg-rose-700 rounded-md border border-rose-500 px-4 py-2 shadow-md"
@@ -71,7 +71,7 @@ const Navbar = () => {
           <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 dark:border-gray-700 rounded-lg bg-teal-300 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800">
             <li>
               <NavLink
-                to="/"
+                to="/home"
                 className={({ isActive }) =>
                   `relative block py-3 px-4 md:p-0 text-lg transition-all duration-300 ${
                     isActive

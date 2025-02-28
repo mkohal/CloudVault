@@ -4,19 +4,14 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
-import axios from "axios";
 import { AuthProvider } from "../authContext";
 import About from "./components/About";
 import Contact from "./components/Contact";
 
-axios.defaults.baseURL = import.meta.env.VITE_API_URL;
-axios.defaults.withCredentials = true;
-
-
 function App() {
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: "/home",
       element: (
         <div className="w-full">
           <Navbar />

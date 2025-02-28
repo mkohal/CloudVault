@@ -18,7 +18,7 @@ const Login = () => {
     e.preventDefault();
     const { username, password } = formData; // formdata cho username te password extract kita destructuring krke
     try {
-      const { data } = await axios.post("/login", {
+      const { data } = await axios.post("/api/login", {
         username,
         password,
       });
@@ -39,7 +39,7 @@ const Login = () => {
       login(data.token);
       setFormData({ username: "", password: "" });
       toast.success(`${username} logged in successfully!`);
-      navigate("/");
+      navigate("/home");
     } catch (err) {
       toast.error(err.response?.data?.message || "Something went wrong!");
     }
