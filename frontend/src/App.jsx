@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import { AuthProvider } from "../authContext";
 import About from "./components/About";
 import Contact from "./components/Contact";
+import axios from "axios";
 
 axios.defaults.baseURL = "https://cloud-vault-backend.vercel.app";
 axios.defaults.withCredentials = true;
