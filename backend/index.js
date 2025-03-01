@@ -1,16 +1,21 @@
 // 1️⃣ Load environment variables before anything else
 require("dotenv").config();
 
+
 // 2️⃣ Import dependencies
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const connectToDB = require("./config/db"); 
+connectToDB();
+
+
 
 // 3️⃣ Initialize the app
 const app = express();
 app.use(
   cors({
-    origin: "https://cloud-vault-frontend-omega.vercel.app",
+    origin: process.env.FRONTEND_URL,
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
