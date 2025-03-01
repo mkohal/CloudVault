@@ -8,10 +8,14 @@ const cookieParser = require("cookie-parser");
 
 // 3️⃣ Initialize the app
 const app = express();
-
-app.use(cors({ origin: "https://cloud-vault-frontend-omega.vercel.app" ,
-  credentials : true
- })); // Enable CORS for all routes
+app.use(
+  cors({
+    origin: "https://cloud-vault-frontend-omega.vercel.app",
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
 // 5️⃣ Middlewares before defining routes
 app.use(express.json());
