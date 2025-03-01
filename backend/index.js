@@ -43,7 +43,7 @@ app.use("/api/file", uploadRouter);
 
 // 8️⃣ Root route
 app.get("/", (req, res) => {
-  res.json("Hello your backend is running");
+  res.json(`Hello your backend is running and ${connectToDB()}`);
 });
 
 // 9️⃣ Start the server
