@@ -8,6 +8,9 @@ import { AuthProvider } from "../authContext";
 import About from "./components/About";
 import Contact from "./components/Contact";
 
+axios.defaults.baseURL = "https://cloud-vault-backend.vercel.app";
+axios.defaults.withCredentials = true;
+
 function App() {
   const router = createBrowserRouter([
     {

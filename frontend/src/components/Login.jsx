@@ -19,7 +19,7 @@ const Login = () => {
     const { username, password } = formData; // formdata cho username te password extract kita destructuring krke
     try {
       const { data } = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/login`,
+        "/api/login",
         {
           username,
           password,
