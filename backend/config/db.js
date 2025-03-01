@@ -1,11 +1,22 @@
 const mongoose = require("mongoose");
 
-function connectToDB(){
-    mongoose.connect(process.env.MONGO_URI).then(()=>{
-        console.log("Connected to DB")
-        const value = "Connected to DB";
-        return value;
+let dbConnected = false; // Store connection status
+
+function connectToDB() {
+  mongoose
+    .connect(process.env.MONGO_URI)
+    .then(() => {
+      console.log("Connected to DB");
+      dbConnected = true; // Update status on success
     })
+    .catch((err) => {
+      console.error("DB Connection Error:", err);
+      dbConnected = false; // Update status on failure
+    });
 }
 
-module.exports = connectToDB;
+function getDBStatus() {
+  return dbConnected ? "DB Is Connected" : "DB Is Not Connected";
+}
+
+module.exports = { connectToDB, getDBStatus };
