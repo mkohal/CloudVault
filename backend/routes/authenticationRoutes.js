@@ -24,7 +24,7 @@ router.post(
 
     const { username, email, password } = req.body;
 
-     const existUsername = await userModel.findOne({ username });
+    const user = await userModel.findOne({ username }).maxTimeMS(5000);;
      if (existUsername) {
        return res.status(400).json({ message: "Username already taken!" });
      }
