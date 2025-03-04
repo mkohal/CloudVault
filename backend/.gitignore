@@ -12,7 +12,6 @@ logs/
 debug.log
 
 # Cache & Output files
-dist/
 build/
 *.cache
 .vscode/
