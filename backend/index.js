@@ -43,17 +43,17 @@ app.use("/api", downloadRouter);
 app.use("/api/file", uploadRouter);
 
 // 8️⃣ Root route
-app.get("/", (req, res) => {
-  res.json({
-    message: "Hello, your backend is running!",
-    databaseStatus: getDBStatus(),
-  });
-});
-app.get("/debug", (req, res) => {
-  res.json({
-    MONGO_URI: process.env.MONGO_URI ? "Loaded" : "Not Loaded",
-  });
-});
+// app.get("/", (req, res) => {
+//   res.json({
+//     message: "Hello, your backend is running!",
+//     databaseStatus: getDBStatus(),
+//   });
+// });
+// app.get("/debug", (req, res) => {
+//   res.json({
+//     MONGO_URI: process.env.MONGO_URI ? "Loaded" : "Not Loaded",
+//   });
+// });
 
 // 9️⃣ Start the server
 const port = process.env.PORT || 3000;
