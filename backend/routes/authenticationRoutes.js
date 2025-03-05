@@ -83,7 +83,13 @@ router.post("/login", async (req,res)=>{
     );
 
     console.log("Generated Token:", token); 
-    res.cookie("token", token) // token ko hum cookies mai bhej rhe hai
+   
+     // token ko hum cookies mai bhej rhe hai
+     res.cookie("token", token, {
+       httpOnly: true, // Prevents JavaScript access
+       secure: true, // Ensures cookies are sent over HTTPS
+       sameSite: "None", // Allows cross-origin cookies (important for frontend-backend on different domains)
+     });
     res.json({token})
    
 
