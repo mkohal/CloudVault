@@ -1,8 +1,13 @@
 const jwt = require("jsonwebtoken");
 
 function auth(req, res, next) {
-  const token = req.cookies.token; // cookies mai humare token pda hoga
+  // First, try to get the token from Authorization header
+  let token = req.headers.authorization?.split(" ")[1];
 
+  // If not found in header, try checking cookies (optional, if you still want cookie support)
+  if (!token && req.cookies?.token) {
+    token = req.cookies.token;
+  }
   if (!token) {
     // Agr token nhi hai to yeh show krdo
     return res.status(401).json({
