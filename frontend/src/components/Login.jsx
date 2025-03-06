@@ -23,7 +23,8 @@ const Login = () => {
         {
           username,
           password,
-        }
+        },
+        { withCredentials: true }
       );
 
       // data ek propert hai axios response object ki isliye {data} ese access kr rhe hai

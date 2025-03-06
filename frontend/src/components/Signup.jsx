@@ -26,7 +26,7 @@ const Signup = () => {
           username,
           email,
           password,
-        }
+        },
       );
       console.log(data);
       setFormData({ username: "", email: "", password: "" });
