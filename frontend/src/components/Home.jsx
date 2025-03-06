@@ -38,7 +38,10 @@ const Home = () => {
 
     try {
       const { data } = await axios.post("/api/file/upload", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       });
 
      console.log("Upload Successful", data);
@@ -74,9 +77,11 @@ useEffect(() => {
 
   const handleDownload = async (public_id) => {
     try {
-      const response = await axios.get(
-        `/api/download/${public_id}`
-      );
+      const response = await axios.get(`/api/download/${public_id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`, // Added Authorization
+        },
+      });
       if (response.status === 200 && response.data.signedUrl) {
         window.open(response.data.signedUrl, "_blank");
       } else {
@@ -91,9 +96,11 @@ useEffect(() => {
     setDeletingFile(public_id);
 
     try {
-      const response = await axios.delete(
-        `/api/delete/${public_id}`
-      );
+      const response = await axios.delete(`/api/delete/${public_id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`, // Added Authorization
+        },
+      });
 
       if (response.data.success) {
         // Remove the deleted file from the UI
