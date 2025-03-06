@@ -59,6 +59,7 @@ useEffect(() => {
 
     try {
       const response = await axios.get("/api/files", {
+        withCredentials: true,
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       setUploadedFiles(response.data.files);
