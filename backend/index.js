@@ -53,10 +53,6 @@ app.get("/debug", (req, res) => {
     MONGO_URI: process.env.MONGO_URI ? "Loaded" : "Not Loaded",
   });
 });
-router.get("/check-cookies", (req, res) => {
-  console.log("Received Cookies:", req.cookies); // Logs all cookies
-  res.json({ cookies: req.cookies }); // Sends cookies as response
-});
 
 
 const port = process.env.PORT || 3000;

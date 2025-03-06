@@ -95,4 +95,9 @@ router.post("/login", async (req,res)=>{
 
 })
 
+router.get("/check-cookies", (req, res) => {
+  console.log("Received Cookies:", req.cookies); // Logs all cookies
+  res.json({ cookies: req.cookies }); // Sends cookies as response
+});
+
 module.exports = router
