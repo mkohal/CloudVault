@@ -8,6 +8,7 @@ const Login = () => {
   const navigate = useNavigate();
   const { login } = useContext(AuthContext); 
   const [formData, setFormData] = useState({ username: "", password: "" });
+   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -16,6 +17,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const { username, password } = formData; // formdata cho username te password extract kita destructuring krke
     try {
       const { data } = await axios.post(
@@ -33,7 +35,7 @@ const Login = () => {
       // aur token k liye response.data.token
       // ek bar axios response dekh lena kosni konsi properties hai usme
       // hun asi post request send kiti hai user credentials nal
-     // response ch backend cho jehda data ayega request marke o store hoyega
+      // response ch backend cho jehda data ayega request marke o store hoyega
       // When you make an HTTP request with Axios, it returns a response object. This response object contains
       // several properties, and one of them is .data, which holds the actual response from the backend.
       // so we can directly write data for storing response or can futher use reponse.data to fetech data
@@ -46,6 +48,8 @@ const Login = () => {
       navigate("/");
     } catch (err) {
       toast.error(err.response?.data?.message || "Something went wrong!");
+    } finally {
+      setLoading(false); // Reset loading state after request completes
     }
   };
 
@@ -108,7 +112,7 @@ const Login = () => {
         font-medium rounded-lg text-sm px-5 py-3 text-center dark:bg-blue-500 
         dark:hover:bg-blue-600 dark:focus:ring-blue-700 transition-all duration-300"
         >
-          Submit
+          {loading ? "Logging in..." : "Submit"}
         </button>
       </form>
     </div>
